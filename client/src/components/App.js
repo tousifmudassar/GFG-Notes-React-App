@@ -37,6 +37,12 @@ class App extends Component {
       });
     }
   };
+  handleLogOut = e => {
+    e.preventDefault();
+    this.setState({
+      User: null
+    });
+  };
   render() {
     return (
       <div className="App">
@@ -44,7 +50,7 @@ class App extends Component {
           Mudassar Tousif Notes App
         </Header>
         {this.state.User ? (
-          <Welcome User={this.state.User} />
+          <Welcome User={this.state.User} handleLogOut={this.handleLogOut} />
         ) : (
           <Login handleAuth={this.handleAuth} Error={this.state.Error} />
         )}
