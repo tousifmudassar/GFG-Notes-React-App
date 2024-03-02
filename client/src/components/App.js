@@ -41,12 +41,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header className="Header" dark={true}>
-          GFG Notes App
+          Mudassar Tousif Notes App
         </Header>
         {this.state.User ? (
           <Welcome User={this.state.User} />
         ) : (
-          <Login handleAuth={this.handleAuth} />
+          <Login handleAuth={this.handleAuth} Error={this.state.Error} />
         )}
       </div>
     );
