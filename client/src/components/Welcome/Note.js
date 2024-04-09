@@ -1,7 +1,24 @@
-const Note = ({ CurrentNote }) => {
-  return CurrentNote !== null
-    ? `You're looking at Note #${CurrentNote + 1}`
-    : "Click on a note from left Side.";
+import React from "react";
+import {
+  // BrowserRouter as Router,
+  Switch,
+  Route,
+  withRouter
+} from "react-router-dom";
+
+const Note = ({ CurrentNote, ...props }) => {
+  return (
+    <Switch>
+      <Route path="/" exact={true}>
+        Select something from the left
+      </Route>
+      <Route path="/:NoteID">
+        <pre className="border rounded p-1 bg-light">
+          {JSON.stringify(props, null, 2)}
+        </pre>
+      </Route>
+    </Switch>
+  );
 };
 
-export default Note;
+export default withRouter(Note);
