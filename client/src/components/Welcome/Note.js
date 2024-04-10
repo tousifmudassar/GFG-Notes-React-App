@@ -1,24 +1,18 @@
 import React from "react";
-import {
-  // BrowserRouter as Router,
-  Switch,
-  Route,
-  withRouter
-} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import NoteWelcome from "./_NoteWelcome";
+import NoteContent from "./_NoteContent";
 
-const Note = ({ match }) => {
+const Note = ({ match, Notes }) => {
   return (
     <Switch>
-      <Route path="/" exact={true}>
-        Select something from the left
-      </Route>
-      <Route path="/:NoteID">
-        <pre className="border rounded p-1 bg-light">
-          {JSON.stringify(match, null, 2)}
-        </pre>
-      </Route>
+      <Route path="/" exact={true} component={NoteWelcome} />
+      <Route
+        path="/:NoteID"
+        render={rp => <NoteContent {...rp} Notes={Notes} />}
+      />
     </Switch>
   );
 };
 
-export default withRouter(Note);
+export default Note;
