@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const WelcomeHeader = ({ User, handleLogOut }) => {
   return (
@@ -6,6 +7,9 @@ const WelcomeHeader = ({ User, handleLogOut }) => {
       <div className="col-12">
         <div className="border rounded p-2">
           <p>Welcome, {User.Name}.</p>
+          <Link to="/" className="btn btn-primary btn-sm mr-2">
+            Home
+          </Link>
           <button className="btn btn-danger btn-sm" onClick={handleLogOut}>
             Logout
           </button>
