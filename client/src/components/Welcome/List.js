@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const List = ({ Notes, match }) => {
   return (
@@ -7,7 +7,7 @@ const List = ({ Notes, match }) => {
       <h3>Note Lists</h3>
 
       <div className="list-group">
-        {Notes.map((item, key) => (
+        {Notes.map((note, key) => (
           <Link
             to={"/note-" + key}
             className={
@@ -19,7 +19,7 @@ const List = ({ Notes, match }) => {
             }
             key={key}
           >
-            {item}
+            {note.Title}
           </Link>
         ))}
       </div>
