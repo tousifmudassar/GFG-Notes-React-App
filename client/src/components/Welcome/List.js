@@ -1,19 +1,22 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, Route, withRouter } from "react-router-dom";
 
-const List = ({ Notes, setCurrentNote, CurrentNote }) => {
+const List = ({ Notes, match }) => {
   return (
     <>
       <h3>Note Lists</h3>
+
       <div className="list-group">
         {Notes.map((item, key) => (
           <Link
             to={"/note-" + key}
             className={
-              "list-group-item list-group-item-action" + (false ? "active" : "")
+              "list-group-item list-group-item-action" +
+              (+match.params.NoteID.replace("note-", "") === key
+                ? "active"
+                : "")
             }
             key={key}
-            onClick={() => setCurrentNote(key)}
           >
             {item}
           </Link>
