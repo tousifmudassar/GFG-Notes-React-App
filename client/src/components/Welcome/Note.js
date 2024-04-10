@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import NoteWelcome from "./_NoteWelcome";
 import NoteContent from "./_NoteContent";
 
-const Note = ({ match, Notes }) => {
+const Note = ({ Notes }) => {
   return (
     <Switch>
       <Route path="/" exact={true} component={NoteWelcome} />
