@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 const List = ({ Notes, match }) => {
   return (
     <>
-      <h3>Note Lists</h3>
+      <h3 className="mb-3">Note Lists</h3>
 
       <div className="list-group">
         {Notes.map((note, key) => (
