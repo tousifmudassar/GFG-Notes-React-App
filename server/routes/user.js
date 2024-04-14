@@ -39,6 +39,9 @@ user.post("/login", (req, res) => {
     });
   } else {
     //Password is right!
+    req.session.User = {
+      Name: username
+    };
     res.json({
       Error: false,
       Success: true,
@@ -64,6 +67,14 @@ user.post("/register", (req, res) => {
       Message: `User ${username} already exist.`
     });
   }
+});
+user.post("/logout", (req, res) => {
+  req.session.destroy();
+  req.status(202).json({
+    Error: false,
+    Success: true,
+    Message: "User successfully logged out."
+  });
 });
 
 module.exports = user;
