@@ -39,6 +39,7 @@ class App extends Component {
       .catch(error => {
         this.setState({
           User: null,
+          RegSuccess: null,
           RegError: error.response.data.Message
         });
       });
