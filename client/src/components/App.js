@@ -2,40 +2,46 @@ import React, { Component } from "react";
 import Header from "./Header/Header";
 import Welcome from "./Welcome/Welcome";
 import Login from "./Login/Login";
+import { AuthUser } from "../services/User";
+import { RegUser } from "../services/User";
 
 class App extends Component {
   state = {
     User: null,
-    Error: null
+    AuthError: null,
+    RegError: null,
+    RegSuccess: null
   };
   handleAuth = (username, password) => {
-    const Users = {
-      Mudassar: "Mudassar@123",
-      Tousif: "Tousif@123",
-      Praveen: "Hello@123",
-      Shivam: "password",
-      Admin: "Admin@123",
-      User: "User@123"
-    };
-    if (!Users[username]) {
-      //Users not found
-      this.setState({
-        User: null,
-        Error: "User not found!"
+    AuthUser(username, password)
+      .then(res =>
+        this.setState({
+          User: res.data.Message,
+          AuthError: null
+        })
+      )
+      .catch(error => {
+        this.setState({
+          User: null,
+          AuthError: error.response.data.Message
+        });
       });
-    } else if (Users[username] && Users[username] !== password) {
-      //Password is wrong.
-      this.setState({
-        User: null,
-        Error: "Wrong Password!"
+  };
+  handleReg = (username, password) => {
+    RegUser(username, password)
+      .then(res =>
+        this.setState({
+          User: null,
+          RegError: null,
+          RegSuccess: res.data.Message
+        })
+      )
+      .catch(error => {
+        this.setState({
+          User: null,
+          RegError: error.response.data.Message
+        });
       });
-    } else {
-      //Password is right!
-      this.setState({
-        User: { Name: username },
-        Error: null
-      });
-    }
   };
   handleLogOut = e => {
     e.preventDefault();
@@ -52,7 +58,13 @@ class App extends Component {
         {this.state.User ? (
           <Welcome User={this.state.User} handleLogOut={this.handleLogOut} />
         ) : (
-          <Login handleAuth={this.handleAuth} Error={this.state.Error} />
+          <Login
+            handleAuth={this.handleAuth}
+            handleReg={this.handleReg}
+            RegSuccess={this.state.RegSuccess}
+            AuthError={this.state.AuthError}
+            RegError={this.state.RegError}
+          />
         )}
       </div>
     );
