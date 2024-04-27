@@ -3,8 +3,8 @@ import FormGroup from "../Forms/FormGroup";
 
 export class RegForm extends Component {
   state = {
-    Username: "",
-    Password: ""
+    RegUsername: "",
+    RegPassword: ""
   };
   handleChange = e => {
     console.log(`${e.target.name}: ${e.target.value}`);
@@ -14,7 +14,7 @@ export class RegForm extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleAuth(this.state.Username, this.state.Password);
+    this.props.handleReg(this.state.RegUsername, this.state.RegPassword);
   };
   render() {
     return (
@@ -28,12 +28,12 @@ export class RegForm extends Component {
         )}
         {[
           {
-            Id: "Username",
+            Id: "RegUsername",
             Type: "text",
             Desc: "Put your username in right case."
           },
           {
-            Id: "Password",
+            Id: "RegPassword",
             Type: "password",
             Desc: "Create a new password forget it."
           }
