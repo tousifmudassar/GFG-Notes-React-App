@@ -8,10 +8,18 @@ import {
 import List from "./List";
 import WelcomeHeader from "./WelcomeHeader";
 import Note from "./Note";
+import { GetNotes } from "../../services/Notes";
 class Welcome extends Component {
   state = {
     Notes: []
   };
+  componentDidMount() {
+    GetNotes().then(res => {
+      this.setState({
+        Notes: res.data
+      });
+    });
+  }
 
   render() {
     const { User, handleLogOut } = this.props;
