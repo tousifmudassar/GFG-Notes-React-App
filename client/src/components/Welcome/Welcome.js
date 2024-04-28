@@ -10,28 +10,7 @@ import WelcomeHeader from "./WelcomeHeader";
 import Note from "./Note";
 class Welcome extends Component {
   state = {
-    Notes: [
-      {
-        NoteID: "hello",
-        Title: "Hello World",
-        Desc: "Hello WorldHello WorldHello WorldHello WorldHello WorldHello WorldHello World"
-      },
-      {
-        NoteID: "faq",
-        Title: "Frequently Asked Questions",
-        Desc: "What questions are you asking frequently"
-      },
-      {
-        NoteID: "gfg",
-        Title: "GeeksforGeeks",
-        Desc: "Hello GeeksforGeeks"
-      },
-      {
-        NoteID: "mt",
-        Title: "Mudassar Tousif",
-        Desc: "Hello Mudassar Tousif"
-      }
-    ]
+    Notes: []
   };
 
   render() {
