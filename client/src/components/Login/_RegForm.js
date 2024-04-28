@@ -19,7 +19,7 @@ export class RegForm extends Component {
   render() {
     return (
       <form className="RegForm" onSubmit={this.handleSubmit}>
-        <h3 className="mb-3">Login</h3>
+        <h3 className="mb-3">Register</h3>
         {this.props.Error && (
           <div className="alert alert-danger">{this.props.Error}</div>
         )}
@@ -40,7 +40,7 @@ export class RegForm extends Component {
         ].map((fg, key) => {
           return (
             <FormGroup
-              Label={fg.Id}
+              Label={fg.Id.replace("Reg", " ")}
               Value={this.state[fg.Id]}
               {...fg}
               key={key}
@@ -48,7 +48,7 @@ export class RegForm extends Component {
             />
           );
         })}
-        <input type="submit" value="Login" className="btn btn-primary" />
+        <input type="submit" value="Register" className="btn btn-primary" />
       </form>
     );
   }
