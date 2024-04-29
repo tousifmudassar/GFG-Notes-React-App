@@ -25,11 +25,39 @@ const Notes = [
     Title: "Jennifer Parker",
     User: "Mudassar",
     Desc: "Jennifer Jane Parker (portrayed by Claudia Wells in the first film and voiced by her in Back to the Future: The Game, Elisabeth Shue in the second and third film, voiced by Cathy Cavadini in the animated series) is dating Marty McFly. In 2015 as seen in Back to the Future Part II, they are married."
+  },
+  {
+    NoteID: "ned",
+    Title: "Eddard 'Ned' Stark",
+    User: "Bhooshan",
+    Desc: "Eddard 'Ned' Stark known as The Quiet Wolf is a fictional character in the 1996 fantasy novel A Game of Thrones by George R. R. Martin, and Game of Thrones, HBO's adaptation of Martin's A Song of Ice and Fire series. In the storyline, Ned is the lord of Winterfell, an ancient fortress in the North of the fictional continent of Westeros."
   }
 ];
 
 note.get("/", (req, res) => {
   res.json(Notes);
+});
+note.post("/", (req, res) => {
+  const { NoteID, Title, User, Desc } = req.body;
+  if (Notes.find(note => note.NoteID === NoteID)) {
+    res.status(409).json({
+      Error: true,
+      Success: false,
+      Message: "Note ID already taken!"
+    });
+  } else {
+    Notes.push({
+      NoteID,
+      Title,
+      User,
+      Desc
+    });
+    res.status(201).json({
+      Error: false,
+      Success: true,
+      Message: `Note ${Title} created successfully!`
+    });
+  }
 });
 
 module.exports = note;
