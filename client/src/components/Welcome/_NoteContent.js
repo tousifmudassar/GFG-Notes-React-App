@@ -12,7 +12,7 @@ const NoteContent = ({ match, Notes }) => {
       </>
     );
   }
-  const Note = Notes[+match.params.NoteID.replace("note-", "")];
+  const Note = Notes.find(note => note.NoteID === match.params.NoteID);
   if (!Note) {
     return (
       <>
@@ -22,7 +22,7 @@ const NoteContent = ({ match, Notes }) => {
     );
   }
 
-  const { Title, Desc } = Notes[+match.params.NoteID.replace("note-", "")];
+  const { Title, Desc } = Note;
   return (
     <>
       <h3 className="mb-3">{Title}</h3>
