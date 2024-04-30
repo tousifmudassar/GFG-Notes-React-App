@@ -6,7 +6,7 @@ const Notes = [
     NoteID: "marty",
     Title: "Marty McFly",
     User: "Mudassar",
-    Desc: "Martin Seamus '**Marty**' McFly is a fictional character and the protagonist of the Back to the Future franchise. He is a high school student who accidentally becomes a time traveler and alters history after his friend Emmett Brown invents a DeLorean **time machine**."
+    Desc: "Martin Seamus '**Marty**' McFly is a fictional character and the protagonist of the Back to the Future franchise. He is a high school student who accidentally becomes a time traveler and alters history after his friend Emmett Brown invents a DeLorean **time machine**.\n\n![Marty McFly](https://i.imgur.com/qY6nJOc.jpeg)"
   },
   {
     NoteID: "emmet",
