@@ -7,8 +7,20 @@ const NewNote = ({ User }) => {
   const [Desc, setDesc] = React.useState("");
   const [Title, setTitle] = React.useState("");
   const NoteID = Sluggify(Title);
+  const handleSubmit = e => {
+    e.preventDefault();
+    // <pre className="mt-3 border-rounded bg-light">
+    //   {JSON.stringify({ NoteID, Desc, Title, User }, null, 2)}
+    // </pre>;
+    console.log(NoteID, Desc, Title, User);
+  };
+  const handleReset = e => {
+    e.preventDefault();
+    setDesc("");
+    setTitle("");
+  };
   return (
-    <div className="NewNote">
+    <form className="NewNote" onSubmit={handleSubmit} onReset={handleReset}>
       <h3 className="mb-3">
         Creating
         <input
@@ -24,11 +36,21 @@ const NewNote = ({ User }) => {
         <em>Being Created by {User}...</em>
       </p>
       <MDEditor
-        height={window.innerHeight - 300}
+        height={window.innerHeight - 350}
         value={Desc}
         onChange={setDesc}
       />
-    </div>
+      <input
+        type="submit"
+        value="Create Note"
+        className="btn btn-primary mt-3 mb-3"
+      />
+      <input
+        type="reset"
+        value="Reset Note"
+        className="btn btn-outline-secondary mt-3 mb-3 ml-3"
+      />
+    </form>
   );
 };
 
