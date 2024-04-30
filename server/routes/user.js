@@ -79,7 +79,7 @@ user.post("/register", (req, res) => {
 });
 user.post("/logout", (req, res) => {
   req.session.destroy();
-  req.status(202).json({
+  res.status(202).json({
     Error: false,
     Success: true,
     Message: "User successfully logged out."
