@@ -3,10 +3,10 @@ import MDEditor from "@uiw/react-md-editor";
 import { Sluggify } from "../../helpers/Helpers";
 import { CreateNote } from "../../services/Notes";
 
-const NewNote = ({ User }) => {
+const NewNote = ({ User, RefreshNotes }) => {
   User = User.Name;
-  const [Desc, setDesc] = React.useState("");
-  const [Title, setTitle] = React.useState("");
+  const [Desc, setDesc] = useState("");
+  const [Title, setTitle] = useState("");
   const NoteID = Sluggify(Title);
   const handleSubmit = e => {
     e.preventDefault();
@@ -14,8 +14,8 @@ const NewNote = ({ User }) => {
     //   {JSON.stringify({ NoteID, Desc, Title, User }, null, 2)}
     // </pre>;
 
-    CreateNote(NoteID, Desc, Title, User).then(res => {
-      console.log(res);
+    CreateNote(NoteID, Desc, Title, User).then(() => {
+      RefreshNotes();
     });
   };
   const handleReset = e => {
