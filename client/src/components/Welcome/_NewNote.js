@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import { Sluggify } from "../../helpers/Helpers";
+import { CreateNote } from "../../services/Notes";
 
 const NewNote = ({ User }) => {
   User = User.Name;
@@ -12,7 +13,10 @@ const NewNote = ({ User }) => {
     // <pre className="mt-3 border-rounded bg-light">
     //   {JSON.stringify({ NoteID, Desc, Title, User }, null, 2)}
     // </pre>;
-    console.log(NoteID, Desc, Title, User);
+
+    CreateNote(NoteID, Desc, Title, User).then(res => {
+      console.log(res);
+    });
   };
   const handleReset = e => {
     e.preventDefault();
