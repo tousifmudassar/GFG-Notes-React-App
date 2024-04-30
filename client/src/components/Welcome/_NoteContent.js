@@ -1,4 +1,5 @@
 import React from "react";
+import MDEditor from "@uiw/react-md-editor";
 
 const NoteContent = ({ match, Notes }) => {
   if (Notes.length === 0) {
@@ -31,7 +32,8 @@ const NoteContent = ({ match, Notes }) => {
       <p>
         <em>Created by {User}.</em>
       </p>
-      <p>{Desc}</p>
+      {/* <p>{Desc}</p> */}
+      <MDEditor.Markdown source={Desc} />
     </>
   );
 };
