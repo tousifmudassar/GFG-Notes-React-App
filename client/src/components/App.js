@@ -60,9 +60,6 @@ class App extends Component {
         User: null
       });
     });
-    this.setState({
-      User: null
-    });
   };
   render() {
     return (

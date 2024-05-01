@@ -10,10 +10,6 @@ const NewNote = ({ User, RefreshNotes }) => {
   const NoteID = Sluggify(Title);
   const handleSubmit = e => {
     e.preventDefault();
-    // <pre className="mt-3 border-rounded bg-light">
-    //   {JSON.stringify({ NoteID, Desc, Title, User }, null, 2)}
-    // </pre>;
-
     CreateNote(NoteID, Desc, Title, User).then(() => {
       RefreshNotes();
     });
@@ -29,8 +25,6 @@ const NewNote = ({ User, RefreshNotes }) => {
         Creating
         <input
           type="text"
-          name=""
-          id=""
           placeholder="Enter title here..."
           value={Title}
           onChange={e => setTitle(e.target.value)}

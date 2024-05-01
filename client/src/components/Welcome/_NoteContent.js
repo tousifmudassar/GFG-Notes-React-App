@@ -5,11 +5,8 @@ const NoteContent = ({ match, Notes }) => {
   if (Notes.length === 0) {
     return (
       <>
-        <button className="btn">
-          {/* <i className="fa fa-home"></i> */}
-          <i className="fa-solid fa-spinner"></i>
-        </button>
         <h3 className="mb-3">Loading...</h3>
+        <p>Please Wait...</p>
       </>
     );
   }

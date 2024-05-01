@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-  // BrowserRouter as Router,
-  // Switch,
-  Route
-  // withRouter
-} from "react-router-dom";
+import { Route } from "react-router-dom";
 import List from "./List";
 import WelcomeHeader from "./WelcomeHeader";
 import Note from "./Note";

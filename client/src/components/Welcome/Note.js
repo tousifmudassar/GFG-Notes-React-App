@@ -8,12 +8,15 @@ const Note = ({ User, Notes, RefreshNotes }) => {
   return (
     <Switch>
       <Route path="/" exact={true} component={NoteWelcome} />
-      <Route path="/new" render={rp => <NewNote {...rp} User={User} />}></Route>
+      <Route
+        path="/new"
+        render={rp => (
+          <NewNote {...rp} User={User} RefreshNotes={RefreshNotes} />
+        )}
+      />
       <Route
         path="/:NoteID"
-        render={rp => (
-          <NoteContent RefreshNotes={RefreshNotes} {...rp} Notes={Notes} />
-        )}
+        render={rp => <NoteContent {...rp} Notes={Notes} />}
       />
     </Switch>
   );
